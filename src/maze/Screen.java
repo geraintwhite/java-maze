@@ -23,9 +23,9 @@ public class Screen extends JPanel {
 		
 		grid = new Cell[ROWS * COLS];
 		
-		for (int i = 0; i < COLS; i++) {
-			for (int j = 0; j < ROWS; j++) {
-				grid[i * COLS + j] = new Cell(i, j);
+		for (int y = 0; y < ROWS; y++) {
+			for (int x = 0; x < COLS; x++) {
+				grid[y * ROWS + x] = new Cell(x, y);
 			}
 		}
 	}
