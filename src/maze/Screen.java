@@ -30,7 +30,7 @@ public class Screen extends JPanel {
 
 		for (int y = 0; y < ROWS; y++) {
 			for (int x = 0; x < COLS; x++) {
-				grid[y * ROWS + x] = new Cell(x, y);
+				grid[y * COLS + x] = new Cell(x, y);
 			}
 		}
 
