@@ -70,6 +70,8 @@ public class Screen extends JPanel {
 				end = current;
 				distance = stack.size();
 			}
+		} else if (!stack.isEmpty()) {
+			current = stack.pop();
 		}
 	}
 
