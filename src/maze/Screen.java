@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
@@ -11,8 +13,7 @@ import java.util.Stack;
 import javax.swing.JPanel;
 
 
-public class Screen extends JPanel {
-	private static final int ROWS = 20;
+public class Screen extends JPanel implements MouseListener {
 	private static final int COLS = 20;
 	private static final int ROWS = 20;
 
@@ -30,6 +31,12 @@ public class Screen extends JPanel {
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setBackground(Color.GRAY);
 
+		init();
+
+		addMouseListener(this);
+	}
+
+	private void init() {
 		grid = new Cell[ROWS * COLS];
 
 		for (int y = 0; y < ROWS; y++) {
@@ -141,4 +148,22 @@ public class Screen extends JPanel {
 
 		return neighbours;
 	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		invalidate();
+		init();
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {}
 }

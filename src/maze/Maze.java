@@ -4,9 +4,9 @@ import javax.swing.JFrame;
 
 public class Maze extends JFrame implements Runnable {
   private Thread thread;
-  private Screen screen;
+  private final Screen screen;
   private boolean running = false;
-  private final int UPS = 30;
+  private final int UPS = 120;
 
   public Maze() {
     super("Game Loop");
