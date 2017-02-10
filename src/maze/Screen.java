@@ -79,8 +79,8 @@ public class Screen extends JPanel {
 	}
 
 	private Cell getCell(int x, int y) {
-		int index = y * ROWS + x;
-		if (index < 0 || index >= grid.length) return null;
+		int index = y * COLS + x;
+		if (x < 0 || x >= COLS || y < 0 || y >= ROWS) return null;
 		return grid[index];
 	}
 
