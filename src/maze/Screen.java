@@ -14,13 +14,17 @@ import javax.swing.JPanel;
 public class Screen extends JPanel {
 	private static final int ROWS = 20;
 	private static final int COLS = 20;
+	private static final int ROWS = 20;
 
 	private static final int WIDTH = Cell.SIZE * COLS;
 	private static final int HEIGHT = Cell.SIZE * ROWS;
 
-	private final Cell[] grid;
+	private Cell[] grid;
+	private Stack<Cell> stack;
+
 	private Cell current;
-	private final Stack<Cell> stack;
+	private Cell end;
+	private int distance;
 
 	public Screen() {
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -33,6 +37,8 @@ public class Screen extends JPanel {
 				grid[y * COLS + x] = new Cell(x, y);
 			}
 		}
+
+		distance = 0;
 
 		current = grid[0];
 		current.visit();
@@ -59,6 +65,11 @@ public class Screen extends JPanel {
 			stack.push(current);
 			next.visit();
 			current = next;
+
+			if (stack.size() > distance) {
+				end = current;
+				distance = stack.size();
+			}
 		}
 	}
 
