@@ -64,6 +64,7 @@ public class Screen extends JPanel {
 			Cell next = pickCell(neighbours);
 			stack.push(current);
 			next.visit();
+			removeWalls(current, next);
 			current = next;
 
 			if (stack.size() > distance) {
@@ -72,6 +73,28 @@ public class Screen extends JPanel {
 			}
 		} else if (!stack.isEmpty()) {
 			current = stack.pop();
+		}
+	}
+
+	private void removeWalls(Cell current, Cell next) {
+		int diffY = next.getY() - current.getY();
+		int diffX = next.getX() - current.getX();
+
+		if (diffY == -1) {
+			next.drawBottom = false;
+			current.drawTop = false;
+		}
+		if (diffX == 1) {
+			next.drawLeft = false;
+			current.drawRight = false;
+		}
+		if (diffY == 1) {
+			next.drawTop = false;
+			current.drawBottom = false;
+		}
+		if (diffX == -1) {
+			next.drawRight = false;
+			current.drawLeft = false;
 		}
 	}
 

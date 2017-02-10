@@ -7,6 +7,7 @@ public class Cell {
 	private final int x, y;
 	private final Line2D top, right, bottom, left;
 	private boolean visited = false;
+	public boolean drawTop, drawRight, drawBottom, drawLeft;
 
 	static final int SIZE = 20;
 
@@ -18,13 +19,15 @@ public class Cell {
 		this.right = new Line2D.Double((x + 1) * SIZE, y * SIZE, (x + 1) * SIZE, (y + 1) * SIZE);
 		this.bottom = new Line2D.Double(x * SIZE, (y + 1) * SIZE, (x + 1) * SIZE, (y + 1) * SIZE);
 		this.left = new Line2D.Double(x * SIZE, y * SIZE, x * SIZE, (y + 1) * SIZE);
+
+		drawTop = drawRight = drawBottom = drawLeft = true;
 	}
 
 	public void draw(Graphics2D g2d) {
-		g2d.draw(top);
-		g2d.draw(right);
-		g2d.draw(bottom);
-		g2d.draw(left);
+		if (drawTop) g2d.draw(top);
+		if (drawRight) g2d.draw(right);
+		if (drawBottom) g2d.draw(bottom);
+		if (drawLeft) g2d.draw(left);
 	}
 
 	public void fill(Graphics2D g2d) {
