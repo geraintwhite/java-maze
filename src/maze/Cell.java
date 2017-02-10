@@ -1,5 +1,6 @@
 package maze;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
@@ -23,14 +24,16 @@ public class Cell {
 		drawTop = drawRight = drawBottom = drawLeft = true;
 	}
 
-	public void draw(Graphics2D g2d) {
+	public void draw(Graphics2D g2d, Color color) {
+		g2d.setColor(color);
 		if (drawTop) g2d.draw(top);
 		if (drawRight) g2d.draw(right);
 		if (drawBottom) g2d.draw(bottom);
 		if (drawLeft) g2d.draw(left);
 	}
 
-	public void fill(Graphics2D g2d) {
+	public void fill(Graphics2D g2d, Color color) {
+		g2d.setColor(color);
 		g2d.fillRect(x * SIZE, y * SIZE, SIZE, SIZE);
 	}
 

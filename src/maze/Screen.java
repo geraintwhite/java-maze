@@ -50,12 +50,12 @@ public class Screen extends JPanel {
 		Graphics2D g2d = (Graphics2D) g.create();
 
 		for (Cell c : grid) {
-			c.draw(g2d);
-			if (c.isVisited()) c.fill(g2d);
+			if (c.isVisited()) c.fill(g2d, Color.RED);
+			c.draw(g2d, Color.DARK_GRAY);
 		}
 
-		g2d.setColor(Color.GREEN);
-		current.fill(g2d);
+		current.fill(g2d, Color.GREEN);
+		end.fill(g2d, Color.BLUE);
 	}
 
 	public void tick() {
